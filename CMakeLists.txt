@@ -15,6 +15,7 @@ endif()
 # later once we don't need the console anymore.
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/core/Window.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
