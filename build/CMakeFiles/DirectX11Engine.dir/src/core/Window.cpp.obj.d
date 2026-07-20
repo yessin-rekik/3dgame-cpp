@@ -1,6 +1,6 @@
-CMakeFiles/DirectX11Engine.dir/src/main.cpp.obj: \
- E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\main.cpp \
- E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core/Window.h \
+CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj: \
+ E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core\Window.cpp \
+ E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core\Window.h \
  C:/msys64/ucrt64/include/windows.h C:/msys64/ucrt64/include/_mingw.h \
  C:/msys64/ucrt64/include/_mingw_mac.h \
  C:/msys64/ucrt64/include/_mingw_secapi.h \

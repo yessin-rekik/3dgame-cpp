@@ -22,6 +22,11 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     src
 )
 
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    UNICODE
+    _UNICODE
+)
+
 # No file extensions here - CMake resolves these correctly for both
 # MSVC (d3d11.lib) and MinGW-w64 (libd3d11.a) automatically.
 target_link_libraries(${PROJECT_NAME} PRIVATE

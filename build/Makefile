@@ -128,6 +128,30 @@ DirectX11Engine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/build
 .PHONY : DirectX11Engine/fast
 
+src/core/Window.obj: src/core/Window.cpp.obj
+.PHONY : src/core/Window.obj
+
+# target to build an object file
+src/core/Window.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj
+.PHONY : src/core/Window.cpp.obj
+
+src/core/Window.i: src/core/Window.cpp.i
+.PHONY : src/core/Window.i
+
+# target to preprocess a source file
+src/core/Window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.i
+.PHONY : src/core/Window.cpp.i
+
+src/core/Window.s: src/core/Window.cpp.s
+.PHONY : src/core/Window.s
+
+# target to generate assembly for a file
+src/core/Window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.s
+.PHONY : src/core/Window.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -161,6 +185,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... DirectX11Engine
+	@echo ... src/core/Window.obj
+	@echo ... src/core/Window.i
+	@echo ... src/core/Window.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
