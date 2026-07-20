@@ -84,12 +84,12 @@ clean: CMakeFiles/DirectX11Engine.dir/clean
 CMakeFiles/DirectX11Engine.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=1,2,3 "Built target DirectX11Engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=1,2,3,4 "Built target DirectX11Engine"
 .PHONY : CMakeFiles/DirectX11Engine.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DirectX11Engine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/DirectX11Engine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles 0
 .PHONY : CMakeFiles/DirectX11Engine.dir/rule
@@ -101,7 +101,7 @@ DirectX11Engine: CMakeFiles/DirectX11Engine.dir/rule
 # codegen rule for target.
 CMakeFiles/DirectX11Engine.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=1,2,3 "Finished codegen for target DirectX11Engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target DirectX11Engine"
 .PHONY : CMakeFiles/DirectX11Engine.dir/codegen
 
 # clean rule for target.

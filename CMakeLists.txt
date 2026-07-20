@@ -16,6 +16,7 @@ endif()
 add_executable(${PROJECT_NAME}
     src/main.cpp
     src/core/Window.cpp
+    src/graphics/Direct3D.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE

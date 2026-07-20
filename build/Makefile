@@ -152,6 +152,30 @@ src/core/Window.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.s
 .PHONY : src/core/Window.cpp.s
 
+src/graphics/Direct3D.obj: src/graphics/Direct3D.cpp.obj
+.PHONY : src/graphics/Direct3D.obj
+
+# target to build an object file
+src/graphics/Direct3D.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj
+.PHONY : src/graphics/Direct3D.cpp.obj
+
+src/graphics/Direct3D.i: src/graphics/Direct3D.cpp.i
+.PHONY : src/graphics/Direct3D.i
+
+# target to preprocess a source file
+src/graphics/Direct3D.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.i
+.PHONY : src/graphics/Direct3D.cpp.i
+
+src/graphics/Direct3D.s: src/graphics/Direct3D.cpp.s
+.PHONY : src/graphics/Direct3D.s
+
+# target to generate assembly for a file
+src/graphics/Direct3D.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.s
+.PHONY : src/graphics/Direct3D.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -188,6 +212,9 @@ help:
 	@echo ... src/core/Window.obj
 	@echo ... src/core/Window.i
 	@echo ... src/core/Window.s
+	@echo ... src/graphics/Direct3D.obj
+	@echo ... src/graphics/Direct3D.i
+	@echo ... src/graphics/Direct3D.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

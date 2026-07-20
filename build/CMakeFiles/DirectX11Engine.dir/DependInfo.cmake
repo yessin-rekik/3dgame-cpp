@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "E:/WorkLibrary/CPP-MASTERY/3dgame-cpp/3dgame-cpp/src/core/Window.cpp" "CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj" "gcc" "CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj.d"
+  "E:/WorkLibrary/CPP-MASTERY/3dgame-cpp/3dgame-cpp/src/graphics/Direct3D.cpp" "CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj" "gcc" "CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj.d"
   "E:/WorkLibrary/CPP-MASTERY/3dgame-cpp/3dgame-cpp/src/main.cpp" "CMakeFiles/DirectX11Engine.dir/src/main.cpp.obj" "gcc" "CMakeFiles/DirectX11Engine.dir/src/main.cpp.obj.d"
   )
 

@@ -321,4 +321,25 @@ CMakeFiles/DirectX11Engine.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/16.1.0/bits/uses_allocator.h \
  C:/msys64/ucrt64/include/c++/16.1.0/bits/uses_allocator_args.h \
  C:/msys64/ucrt64/include/c++/16.1.0/tuple \
- C:/msys64/ucrt64/include/c++/16.1.0/bits/invoke.h
+ C:/msys64/ucrt64/include/c++/16.1.0/bits/invoke.h \
+ E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\graphics/Direct3D.h \
+ C:/msys64/ucrt64/include/d3d11.h C:/msys64/ucrt64/include/ocidl.h \
+ C:/msys64/ucrt64/include/dxgi.h C:/msys64/ucrt64/include/dxgitype.h \
+ C:/msys64/ucrt64/include/dxgicommon.h \
+ C:/msys64/ucrt64/include/dxgiformat.h \
+ C:/msys64/ucrt64/include/d3dcommon.h C:/msys64/ucrt64/include/d3d10_1.h \
+ C:/msys64/ucrt64/include/d3d10.h \
+ C:/msys64/ucrt64/include/d3d10sdklayers.h \
+ C:/msys64/ucrt64/include/d3d10misc.h C:/msys64/ucrt64/include/d3d10.h \
+ C:/msys64/ucrt64/include/d3d10shader.h \
+ C:/msys64/ucrt64/include/d3d10effect.h \
+ C:/msys64/ucrt64/include/d3d10shader.h \
+ C:/msys64/ucrt64/include/d3d10_1shader.h \
+ C:/msys64/ucrt64/include/d3d11sdklayers.h \
+ C:/msys64/ucrt64/include/d3d10misc.h \
+ C:/msys64/ucrt64/include/d3d10effect.h \
+ C:/msys64/ucrt64/include/wrl/client.h C:/msys64/ucrt64/include/roapi.h \
+ C:/msys64/ucrt64/include/hstring.h \
+ C:/msys64/ucrt64/include/inspectable.h \
+ C:/msys64/ucrt64/include/activation.h \
+ C:/msys64/ucrt64/include/wrl/internal.h
