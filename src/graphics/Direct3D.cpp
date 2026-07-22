@@ -1,43 +1,51 @@
 #include "Direct3D.h"
-#include <stdexcept> // Provides std::runtime_error for reporting initialization failures.
+#include <stdexcept>
 
-// Constructs and initializes the core Direct3D objects.
-Direct3D::Direct3D()
+Direct3D::Direct3D(HWND hwnd, int width, int height)
 {
-    // Flags that control how the Direct3D device is created.
     UINT createDeviceFlags = 0;
-
 #ifdef _DEBUG
-    // Enable the Direct3D debug layer when building in Debug mode.
     createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
-    // List of Direct3D feature levels we're willing to accept, ordered highest to lowest.
     D3D_FEATURE_LEVEL featureLevels[] = {
         D3D_FEATURE_LEVEL_11_1,
         D3D_FEATURE_LEVEL_11_0,
     };
 
-    // Receives the highest feature level supported by the hardware.
+    DXGI_SWAP_CHAIN_DESC scd = {};
+    scd.BufferDesc.Width = width;
+    scd.BufferDesc.Height = height;
+    scd.BufferDesc.RefreshRate.Numerator = 60;
+    scd.BufferDesc.RefreshRate.Denominator = 1;
+    scd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+    scd.SampleDesc.Count = 1;
+    scd.SampleDesc.Quality = 0;
+    scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+    scd.BufferCount = 1;
+    scd.OutputWindow = hwnd;
+    scd.Windowed = TRUE;
+    scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+
     D3D_FEATURE_LEVEL chosenFeatureLevel;
 
-    // Create the Direct3D device and its immediate context.
-    HRESULT hr = D3D11CreateDevice(
-        nullptr,                  // Use the default graphics adapter.
-        D3D_DRIVER_TYPE_HARDWARE, // Use the physical GPU instead of a software renderer.
-        nullptr,                  // No software rasterizer module.
-        createDeviceFlags,        // Device creation options.
-        featureLevels,            // Preferred feature levels.
-        ARRAYSIZE(featureLevels), // Number of feature levels provided.
-        D3D11_SDK_VERSION,        // Ensure the application matches the installed D3D runtime.
-        m_device.GetAddressOf(),  // Receives the created device.
-        &chosenFeatureLevel,      // Receives the feature level that was actually selected.
-        m_context.GetAddressOf()  // Receives the immediate device context.
+    HRESULT hr = D3D11CreateDeviceAndSwapChain(
+        nullptr,
+        D3D_DRIVER_TYPE_HARDWARE,
+        nullptr,
+        createDeviceFlags,
+        featureLevels,
+        ARRAYSIZE(featureLevels),
+        D3D11_SDK_VERSION,
+        &scd,
+        m_swapChain.GetAddressOf(),
+        m_device.GetAddressOf(),
+        &chosenFeatureLevel,
+        m_context.GetAddressOf()
     );
 
-    // Abort initialization if Direct3D failed to create a usable device.
     if (FAILED(hr))
     {
-        throw std::runtime_error("D3D11CreateDevice failed - no compatible GPU/driver found");
+        throw std::runtime_error("D3D11CreateDeviceAndSwapChain failed - no compatible GPU/driver found");
     }
 }

@@ -8,7 +8,7 @@ int main()
     try
     {
         Window window(L"DirectX 11 Engine", 1280, 720);
-        Direct3D d3d;
+        Direct3D d3d(window.GetHandle(), window.GetWidth(), window.GetHeight());
 
         while (window.ProcessMessages())
         {
