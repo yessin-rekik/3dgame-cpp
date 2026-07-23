@@ -48,4 +48,31 @@ Direct3D::Direct3D(HWND hwnd, int width, int height)
     {
         throw std::runtime_error("D3D11CreateDeviceAndSwapChain failed - no compatible GPU/driver found");
     }
+
+    CreateRenderTargetView();
+}
+
+void Direct3D::CreateRenderTargetView()
+{
+    // The swap chain owns a back buffer texture (ID3D11Texture2D) - we don't
+    // create it ourselves, we just ask the swap chain for it, then wrap it
+    // in a render target view so the pipeline knows how to write to it.
+    Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
+    HRESULT hr = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &backBuffer);
+
+    if (FAILED(hr))
+    {
+        throw std::runtime_error("Failed to get swap chain back buffer");
+    }
+
+    hr = m_device->CreateRenderTargetView(backBuffer.Get(), nullptr, m_renderTargetView.GetAddressOf());
+
+    if (FAILED(hr))
+    {
+        throw std::runtime_error("Failed to create render target view");
+    }
+
+    // backBuffer (the ComPtr) goes out of scope here and releases its
+    // reference automatically - the RTV holds its own reference internally,
+    // so the underlying texture stays alive as long as we need it.
 }

@@ -16,8 +16,11 @@ public:
     ID3D11DeviceContext* GetContext() const { return m_context.Get(); }
 
     IDXGISwapChain* GetSwapChain() const { return m_swapChain.Get(); }
-
+    
 private:
+
+    void CreateRenderTargetView();
+
     // Owns the Direct3D device and automatically releases it when destroyed.
     Microsoft::WRL::ComPtr<ID3D11Device> m_device;
 
@@ -25,4 +28,6 @@ private:
     Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_context;
 
     Microsoft::WRL::ComPtr<IDXGISwapChain> m_swapChain;
+
+    Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_renderTargetView;
 };
