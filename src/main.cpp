@@ -12,7 +12,11 @@ int main()
 
         while (window.ProcessMessages())
         {
-            // Per-frame update/render logic will go here.
+            d3d.Clear(0.392f, 0.584f, 0.929f);
+
+            // Actual drawing goes here (Step 2 onward).
+
+            d3d.Present();
         }
     }
     catch (const std::exception &e)

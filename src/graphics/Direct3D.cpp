@@ -50,13 +50,11 @@ Direct3D::Direct3D(HWND hwnd, int width, int height)
     }
 
     CreateRenderTargetView();
+    SetViewport(width, height);
 }
 
 void Direct3D::CreateRenderTargetView()
 {
-    // The swap chain owns a back buffer texture (ID3D11Texture2D) - we don't
-    // create it ourselves, we just ask the swap chain for it, then wrap it
-    // in a render target view so the pipeline knows how to write to it.
     Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
     HRESULT hr = m_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &backBuffer);
 
@@ -71,8 +69,31 @@ void Direct3D::CreateRenderTargetView()
     {
         throw std::runtime_error("Failed to create render target view");
     }
+}
 
-    // backBuffer (the ComPtr) goes out of scope here and releases its
-    // reference automatically - the RTV holds its own reference internally,
-    // so the underlying texture stays alive as long as we need it.
+void Direct3D::SetViewport(int width, int height)
+{
+    D3D11_VIEWPORT viewport = {};
+    viewport.TopLeftX = 0.0f;
+    viewport.TopLeftY = 0.0f;
+    viewport.Width = static_cast<float>(width);
+    viewport.Height = static_cast<float>(height);
+    viewport.MinDepth = 0.0f;
+    viewport.MaxDepth = 1.0f;
+
+    m_context->RSSetViewports(1, &viewport);
+}
+
+void Direct3D::Clear(float r, float g, float b, float a)
+{
+    ID3D11RenderTargetView* rtv = m_renderTargetView.Get();
+    m_context->OMSetRenderTargets(1, &rtv, nullptr);
+
+    const float clearColor[4] = { r, g, b, a };
+    m_context->ClearRenderTargetView(m_renderTargetView.Get(), clearColor);
+}
+
+void Direct3D::Present()
+{
+    m_swapChain->Present(1, 0);
 }
