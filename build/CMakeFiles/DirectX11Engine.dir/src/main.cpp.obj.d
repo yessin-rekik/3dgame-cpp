@@ -322,6 +322,7 @@ CMakeFiles/DirectX11Engine.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/16.1.0/bits/uses_allocator_args.h \
  C:/msys64/ucrt64/include/c++/16.1.0/tuple \
  C:/msys64/ucrt64/include/c++/16.1.0/bits/invoke.h \
+ E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core/Timer.h \
  E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\graphics/Direct3D.h \
  C:/msys64/ucrt64/include/d3d11.h C:/msys64/ucrt64/include/ocidl.h \
  C:/msys64/ucrt64/include/dxgi.h C:/msys64/ucrt64/include/dxgitype.h \

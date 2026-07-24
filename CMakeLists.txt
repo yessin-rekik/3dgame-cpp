@@ -14,9 +14,14 @@ endif()
 # silent (black screen, no errors). We can switch to a windowed subsystem
 # later once we don't need the console anymore.
 add_executable(${PROJECT_NAME}
+
     src/main.cpp
+
     src/core/Window.cpp
+    src/core/Timer.cpp
+
     src/graphics/Direct3D.cpp
+    
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE

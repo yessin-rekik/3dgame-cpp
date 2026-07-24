@@ -128,6 +128,30 @@ DirectX11Engine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/build
 .PHONY : DirectX11Engine/fast
 
+src/core/Timer.obj: src/core/Timer.cpp.obj
+.PHONY : src/core/Timer.obj
+
+# target to build an object file
+src/core/Timer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj
+.PHONY : src/core/Timer.cpp.obj
+
+src/core/Timer.i: src/core/Timer.cpp.i
+.PHONY : src/core/Timer.i
+
+# target to preprocess a source file
+src/core/Timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.i
+.PHONY : src/core/Timer.cpp.i
+
+src/core/Timer.s: src/core/Timer.cpp.s
+.PHONY : src/core/Timer.s
+
+# target to generate assembly for a file
+src/core/Timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DirectX11Engine.dir\build.make CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.s
+.PHONY : src/core/Timer.cpp.s
+
 src/core/Window.obj: src/core/Window.cpp.obj
 .PHONY : src/core/Window.obj
 
@@ -209,6 +233,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... DirectX11Engine
+	@echo ... src/core/Timer.obj
+	@echo ... src/core/Timer.i
+	@echo ... src/core/Timer.s
 	@echo ... src/core/Window.obj
 	@echo ... src/core/Window.i
 	@echo ... src/core/Window.s

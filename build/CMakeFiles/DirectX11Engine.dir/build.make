@@ -101,11 +101,26 @@ CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.s"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core\Window.cpp -o CMakeFiles\DirectX11Engine.dir\src\core\Window.cpp.s
 
+CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj: CMakeFiles/DirectX11Engine.dir/flags.make
+CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj: CMakeFiles/DirectX11Engine.dir/includes_CXX.rsp
+CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj: E:/WorkLibrary/CPP-MASTERY/3dgame-cpp/3dgame-cpp/src/core/Timer.cpp
+CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj: CMakeFiles/DirectX11Engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj -MF CMakeFiles\DirectX11Engine.dir\src\core\Timer.cpp.obj.d -o CMakeFiles\DirectX11Engine.dir\src\core\Timer.cpp.obj -c E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core\Timer.cpp
+
+CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core\Timer.cpp > CMakeFiles\DirectX11Engine.dir\src\core\Timer.cpp.i
+
+CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\core\Timer.cpp -o CMakeFiles\DirectX11Engine.dir\src\core\Timer.cpp.s
+
 CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj: CMakeFiles/DirectX11Engine.dir/flags.make
 CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj: CMakeFiles/DirectX11Engine.dir/includes_CXX.rsp
 CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj: E:/WorkLibrary/CPP-MASTERY/3dgame-cpp/3dgame-cpp/src/graphics/Direct3D.cpp
 CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj: CMakeFiles/DirectX11Engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj -MF CMakeFiles\DirectX11Engine.dir\src\graphics\Direct3D.cpp.obj.d -o CMakeFiles\DirectX11Engine.dir\src\graphics\Direct3D.cpp.obj -c E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\src\graphics\Direct3D.cpp
 
 CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.i: cmake_force
@@ -120,6 +135,7 @@ CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.s: cmake_force
 DirectX11Engine_OBJECTS = \
 "CMakeFiles/DirectX11Engine.dir/src/main.cpp.obj" \
 "CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj" \
+"CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj" \
 "CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj"
 
 # External object files for target DirectX11Engine
@@ -127,12 +143,13 @@ DirectX11Engine_EXTERNAL_OBJECTS =
 
 DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/src/main.cpp.obj
 DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj
+DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj
 DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj
 DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/build.make
 DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/linkLibs.rsp
 DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/objects1.rsp
 DirectX11Engine.exe: CMakeFiles/DirectX11Engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable DirectX11Engine.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\WorkLibrary\CPP-MASTERY\3dgame-cpp\3dgame-cpp\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable DirectX11Engine.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\DirectX11Engine.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

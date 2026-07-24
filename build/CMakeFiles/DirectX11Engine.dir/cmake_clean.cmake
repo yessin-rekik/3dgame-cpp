@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj"
+  "CMakeFiles/DirectX11Engine.dir/src/core/Timer.cpp.obj.d"
   "CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj"
   "CMakeFiles/DirectX11Engine.dir/src/core/Window.cpp.obj.d"
   "CMakeFiles/DirectX11Engine.dir/src/graphics/Direct3D.cpp.obj"
