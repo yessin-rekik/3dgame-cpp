@@ -1,6 +1,7 @@
 #include "core/Window.h"
 #include "core/Timer.h"
 #include "graphics/Direct3D.h"
+#include "graphics/Shader.h"
 #include <Windows.h>
 
 int main()
@@ -10,6 +11,10 @@ int main()
     {
         Window window(L"DirectX 11 Engine", 1280, 720);
         Direct3D d3d(window.GetHandle(), window.GetWidth(), window.GetHeight());
+        
+        VertexShader vertexShader(d3d.GetDevice(), L"assets/shaders/vs/BasicVertexShader.hlsl");
+        PixelShader pixelShader(d3d.GetDevice(), L"assets/shaders/ps/BasicPixelShader.hlsl");
+        
         Timer timer;
         
         float fpsTimer = 0.0f;

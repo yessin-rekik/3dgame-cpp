@@ -21,6 +21,8 @@ add_executable(${PROJECT_NAME}
     src/core/Timer.cpp
 
     src/graphics/Direct3D.cpp
+    src/graphics/Shader.cpp
+    
     
 )
 
