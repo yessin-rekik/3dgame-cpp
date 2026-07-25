@@ -60,7 +60,22 @@ int main()
 
             d3d.Clear(0.392f, 0.584f, 0.929f);
 
-            // Actual drawing goes here (Step 2 onward).
+            // binds everything the pipeline needs for draw
+            d3d.GetContext()->IASetInputLayout(triangleInputLayout.Get());
+
+            ID3D11Buffer* vertexBuffers[] = { triangleBuffer.Get() };
+            UINT strides[] = { triangleBuffer.GetStride() };
+            UINT offsets[] = { 0 };
+            d3d.GetContext()->IASetVertexBuffers(0, 1, vertexBuffers, strides, offsets);
+
+            d3d.GetContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+            d3d.GetContext()->VSSetShader(vertexShader.Get(), nullptr, 0);
+            d3d.GetContext()->PSSetShader(pixelShader.Get(), nullptr, 0);
+            
+
+            // Actual drawing goes here .
+            d3d.GetContext()->Draw(triangleBuffer.GetVertexCount(), 0);
 
             d3d.Present();
         }
