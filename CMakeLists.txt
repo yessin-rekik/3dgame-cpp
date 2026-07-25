@@ -22,7 +22,7 @@ add_executable(${PROJECT_NAME}
 
     src/graphics/Direct3D.cpp
     src/graphics/Shader.cpp
-    
+    src/graphics/InputLayout.cpp
     
 )
 

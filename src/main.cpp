@@ -4,6 +4,7 @@
 #include "graphics/Shader.h"
 #include "graphics/Vertex.h"
 #include "graphics/Buffer.h"
+#include "graphics/InputLayout.h"
 #include <Windows.h>
 
 int main()
@@ -24,6 +25,17 @@ int main()
         };
 
         VertexBuffer<Vertex> triangleBuffer(d3d.GetDevice(), triangleVertices);
+
+        std::vector<D3D11_INPUT_ELEMENT_DESC> layoutElements = {
+            {"POSITION",
+             0,
+             DXGI_FORMAT_R32G32B32_FLOAT,
+             0,
+             0,
+             D3D11_INPUT_PER_VERTEX_DATA,
+             0}};
+
+        InputLayout triangleInputLayout(d3d.GetDevice(), layoutElements, vertexShader.GetBytecode());
 
         Timer timer;
 
