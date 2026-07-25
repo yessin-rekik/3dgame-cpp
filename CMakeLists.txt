@@ -42,3 +42,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     dxgi
     d3dcompiler
 )
+
+target_link_options(${PROJECT_NAME} PRIVATE
+    -static
+    -static-libgcc
+    -static-libstdc++
+)
