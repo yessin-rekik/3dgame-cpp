@@ -1,7 +1,9 @@
 #include "Window.h"
 
+#include <iostream> // Required header
+
 // Creates a new window and registers the window class if needed.
-Window::Window(const std::wstring& title, int width, int height)
+Window::Window(const std::wstring &title, int width, int height)
     : m_width(width), m_height(height)
 {
     // Get the current application's instance handle.
@@ -10,8 +12,8 @@ Window::Window(const std::wstring& title, int width, int height)
     // Describe the type of window we're creating.
     WNDCLASSEX wc = {};
     wc.cbSize = sizeof(WNDCLASSEX);
-    wc.style = CS_HREDRAW | CS_VREDRAW;      // Redraw when resized horizontally or vertically.
-    wc.lpfnWndProc = WindowProcSetup;        // Temporary message procedure used during creation.
+    wc.style = CS_HREDRAW | CS_VREDRAW; // Redraw when resized horizontally or vertically.
+    wc.lpfnWndProc = WindowProcSetup;   // Temporary message procedure used during creation.
     wc.hInstance = hInstance;
     wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wc.lpszClassName = CLASS_NAME;
@@ -31,8 +33,7 @@ Window::Window(const std::wstring& title, int width, int height)
         nullptr,
         nullptr,
         hInstance,
-        this
-    );
+        this);
 
     // Display the window if creation succeeded.
     if (m_hwnd)
@@ -78,21 +79,28 @@ bool Window::ProcessMessages()
     return !m_shouldClose;
 }
 
+bool Window::ConsumeResizeEvent()
+{
+    const bool wasResized = m_resized;
+    m_resized = false;
+    return wasResized;
+}
+
 // Initial window procedure.
 // During WM_NCCREATE we receive the Window object pointer passed to CreateWindowEx.
 LRESULT CALLBACK Window::WindowProcSetup(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     if (msg == WM_NCCREATE)
     {
-        const CREATESTRUCT* create = reinterpret_cast<CREATESTRUCT*>(lParam);
-        Window* self = static_cast<Window*>(create->lpCreateParams);
+        const CREATESTRUCT *create = reinterpret_cast<CREATESTRUCT *>(lParam);
+        Window *self = static_cast<Window *>(create->lpCreateParams);
 
         // Store the object pointer so future messages can find it.
         SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(self));
 
         // Replace this temporary procedure with the permanent one.
         SetWindowLongPtr(hwnd, GWLP_WNDPROC,
-            reinterpret_cast<LONG_PTR>(&Window::WindowProcThunk));
+                         reinterpret_cast<LONG_PTR>(&Window::WindowProcThunk));
 
         // Let the object handle the very first message.
         return self->HandleMessage(hwnd, msg, wParam, lParam);
@@ -106,7 +114,7 @@ LRESULT CALLBACK Window::WindowProcSetup(HWND hwnd, UINT msg, WPARAM wParam, LPA
 // Simply looks up the associated Window object and forwards the message.
 LRESULT CALLBACK Window::WindowProcThunk(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    Window* self = reinterpret_cast<Window*>(
+    Window *self = reinterpret_cast<Window *>(
         GetWindowLongPtr(hwnd, GWLP_USERDATA));
 
     return self->HandleMessage(hwnd, msg, wParam, lParam);
@@ -121,6 +129,28 @@ LRESULT Window::HandleMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         // Tell Windows the application is finished.
         PostQuitMessage(0);
         return 0;
+    case WM_SIZE:
+    {
+        // LOWORD/HIWORD of lParam are the new client-area width/height -
+        // this is Win32's standard (if slightly cryptic-looking) way of
+        // packing two 16-bit values into one LPARAM.
+        const int newWidth = LOWORD(lParam);
+        const int newHeight = HIWORD(lParam);
+
+        std::cout << "Window resized to " << newWidth << "x" << newHeight << std::endl; 
+
+        // Ignore the WM_SIZE that fires on minimize (both dimensions
+        // collapse to 0) - a 0x0 swap chain resize would fail, and there's
+        // nothing meaningful to render into while minimized anyway.
+        if (newWidth > 0 && newHeight > 0 &&
+            (newWidth != m_width || newHeight != m_height))
+        {
+            m_width = newWidth;
+            m_height = newHeight;
+            m_resized = true;
+        }
+        return 0;
+    }
     }
 
     // Let Windows handle any messages we don't care about.

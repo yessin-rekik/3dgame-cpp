@@ -1,6 +1,8 @@
 #include "Direct3D.h"
 #include <stdexcept>
 
+#include <iostream> // Required header
+
 Direct3D::Direct3D(HWND hwnd, int width, int height)
 {
     UINT createDeviceFlags = 0;
@@ -51,6 +53,38 @@ Direct3D::Direct3D(HWND hwnd, int width, int height)
 
     CreateRenderTargetView();
     SetViewport(width, height);
+    CreateRasterizerState();
+}
+
+
+void Direct3D::CreateRasterizerState()
+{
+    // TEMPORARY: CullMode = NONE means every triangle draws regardless of
+    // winding order, front-facing or not. D3D11's default is
+    // D3D11_CULL_BACK, which silently discards "back-facing" triangles -
+    // but "facing" is only meaningful once there's an actual camera/view
+    // matrix establishing a viewpoint, which we don't have yet. Without one, our winding assumptions don't
+    // resolve the way intended, and backface culling was discarding all
+    // 12 of the cube's triangles - hence nothing rendering at all.
+    //
+    // Once a real camera exists, we'll revisit this, verify winding is
+    // actually correct from the camera's point of view, and switch back
+    // to D3D11_CULL_BACK (culling is a real performance win - roughly
+    // half of any closed mesh's triangles face away from the camera at
+    // any given time and are wasted pixel shader work if not discarded).
+    D3D11_RASTERIZER_DESC desc = {};
+    desc.FillMode = D3D11_FILL_SOLID;
+    desc.CullMode = D3D11_CULL_NONE;
+    desc.FrontCounterClockwise = FALSE;
+    desc.DepthClipEnable = TRUE;
+ 
+    HRESULT hr = m_device->CreateRasterizerState(&desc, m_rasterizerState.GetAddressOf());
+    if (FAILED(hr))
+    {
+        throw std::runtime_error("Failed to create rasterizer state");
+    }
+ 
+    m_context->RSSetState(m_rasterizerState.Get());
 }
 
 void Direct3D::CreateRenderTargetView()
@@ -91,6 +125,34 @@ void Direct3D::Clear(float r, float g, float b, float a)
 
     const float clearColor[4] = { r, g, b, a };
     m_context->ClearRenderTargetView(m_renderTargetView.Get(), clearColor);
+}
+
+void Direct3D::Resize(int width, int height)
+{
+    if (width <= 0 || height <= 0)
+    {
+        return; // minimized or degenerate size - nothing sensible to do
+    }
+ 
+    // Unbind the render target before releasing it - the swap chain refuses
+    // to resize its buffers while anything (including the pipeline itself)
+    // still holds a live reference to the old ones.
+    m_context->OMSetRenderTargets(0, nullptr, nullptr);
+    m_renderTargetView.Reset();
+    
+ 
+    // 0 = keep the existing buffer count; DXGI_FORMAT_UNKNOWN = keep the
+    // existing format. We're only changing dimensions here.
+    HRESULT hr = m_swapChain->ResizeBuffers(0, width, height, DXGI_FORMAT_UNKNOWN, 0);
+    if (FAILED(hr))
+    {
+        throw std::runtime_error("Failed to resize swap chain buffers");
+    }
+ 
+    // The old render target view pointed at the now-destroyed back buffer -
+    // rebuild it against the freshly resized one.
+    CreateRenderTargetView();
+    SetViewport(width, height);
 }
 
 void Direct3D::Present()

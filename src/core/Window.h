@@ -28,6 +28,8 @@ public:
     int GetWidth() const { return m_width; }
     int GetHeight() const { return m_height; }
 
+    bool ConsumeResizeEvent();
+
 private:
 
     // Used only during window creation to connect the Win32 window
@@ -50,6 +52,7 @@ private:
 
     // Indicates when the application should stop running.
     bool m_shouldClose = false;
+    bool m_resized = false;
 
     // Name used to register the Win32 window class.
     static constexpr const wchar_t* CLASS_NAME = L"DX11EngineWindowClass";
